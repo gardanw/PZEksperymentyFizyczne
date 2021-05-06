@@ -18,3 +18,8 @@ class IndexView(generic.ListView):
 class OporView(generic.edit.CreateView):
     template_name = 'experiments/opor.html'
     form_class = UserCreationForm
+
+
+class MrowkiView(generic.edit.CreateView):
+    template_name = 'experiments/mrowki.html'
+    form_class = UserCreationForm
