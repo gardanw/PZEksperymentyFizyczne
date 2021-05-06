@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Opor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+        update_path = function (nL, nA, nro) {
+            var L = parseFloat($(nL).val()) + 5;
+            var A = (parseFloat($(nA).val()) + 1) * 17.5;
+            var ro = parseFloat($(nro).val());
+
+            var s_x = 400;
+            var s_y = 300;
+            var o_path;
+            var t_path;
+            var c;
+
+            var r = 200
+            var g = parseInt(255 - 255 * ro)
+            var b = 0
+
+
+            o_path = `M ${s_x - L} ${s_y - A} L ${s_x + L} ${s_y - A} A 10 5 90 0 1 ${s_x + L} ${s_y + A} L ${s_x - L} ${s_y + A} A 10 5 90 0 1 ${s_x - L} ${s_y - A} Z`;
+            t_path = `M ${s_x - L} ${s_y + A} A 10 5 90 0 1 ${s_x - L} ${s_y - A} A 10 5 90 0 1 ${s_x - L} ${s_y + A} Z`;
+            c = `#${r.toString(16)}${g.toString(16)}${b}${b}`;
+            $('#o_path').attr('d', o_path).css({fill: c});
+            $('#t_path').attr('d', t_path).css({fill: c});
+            $('.R').css({font: `italic ${200 * (ro * L) / A}px serif`})
+            $('.ro').css({font: `italic ${ro * 200}px serif`})
+            $('.L').css({font: `italic ${L}px serif`})
+            $('.A').css({font: `italic ${A}px serif`})
+
+        }
+
+        $(document).ready(function () {
+            update_path('#L_input', '#A_input', '#ro_input');
+
+
+            $('input.slider').bind("input", function () {
+                $(this).next('input.display').val($(this).val());
+                update_path('#L_input', '#A_input', '#ro_input');
+            }).trigger('input');
+
+            $('input.display').bind("input", function () {
+                $(this).prev('input.slider').val($(this).val());
+                update_path('#L_input', '#A_input', '#ro_input');
+            });
+
+        });
+
+    </script>
+    <style>
+        body {
+            background-color: #202020;
+        }
+
+        .control {
+            text-align: center;
+        }
+
+        label {
+            color: lightgrey;
+        }
+
+        input.display {
+            width: 3em;
+        }
+
+        .slider {
+            -webkit-appearance: none; /* Override default CSS styles */
+            appearance: none;
+            width: 100%; /* Full-width */
+            height: 10px; /* Specified height */
+            background: #d3d3d3; /* Grey background */
+            outline: none; /* Remove outline */
+            opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+            -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+            transition: opacity .2s;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: #04AA6D;
+            cursor: pointer;
+        }
+
+        .slider::-moz-range-thumb {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: #04AA6D;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+<body>
+<div class="control">
+    <p>
+        <label for="ro_input" style="width:200px;">Op&#243;r w&#322;a&#347;ciwy:</label>
+        <input class='slider' id="ro_input" type="range" min="0.1" max="1.0" step="0.01" value="0.5"
+               style="width:200px;">
+        <input class='display'/>
+    </p>
+
+    <p>
+        <label for="L_input" style="width:200px;">D&#322;ugo&#347;&#263;:</label>
+        <input class='slider' id="L_input" type="range" min="1" max="200.0" step="0.01" value="100.0"
+               style="width:200px;">
+        <input class='display'/>
+    </p>
+
+    <p>
+        <label for="A_input" style="width:200px;">Pole przekroju:</label>
+        <input class='slider' id="A_input" type="range" min="0.01" max="15.0" step="0.01" value="7.5"
+               style="width:200px;">
+        <input class='display'/>
+    </p>
+</div>
+<div>
+    <svg height="600" width="800">
+        <path id="o_path"
+              d=""
+              style="stroke: black;stroke-miterlimit: 10;"/>
+        <path id="t_path"
+              d=""
+              style="stroke: black;stroke-miterlimit: 10;"/>
+    </svg>
+    <svg height="600" width="800">
+        <style>
+            .R {
+                font: italic 40px serif;
+                fill: orangered;
+                stroke: tomato;
+            }
+
+            .eq {
+                font: italic 40px serif;
+                fill: wheat;
+            }
+
+            .ro {
+                font: italic 40px serif;
+                fill: #5b80b2;
+                stroke: #4ac1f7;
+            }
+
+            .L {
+                font: italic 40px serif;
+                fill: #5b80b2;
+                stroke: #4ac1f7;
+            }
+
+            .A {
+                font: italic 40px serif;
+                fill: #5b80b2;
+                stroke: #4ac1f7;
+            }
+        </style>
+        <text x="0" y="300" class="R">R</text>
+        <text x="60" y="300" class="eq">=</text>
+        <path d="M 100 287 300 287" style="stroke: wheat; stroke-width: 5"></path>
+        <text x="120" y="270" class="ro">&rho;</text>
+        <text x="220" y="270" class="L">L</text>
+        <text x="150" y="400" class="A">A</text>
+    </svg>
+</div>
+<svg class="smok">
+
+</svg>
+</body>
+</html>

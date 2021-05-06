@@ -1,3 +1,4 @@
+from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render
 from django.views import generic
 
@@ -12,3 +13,8 @@ class IndexView(generic.ListView):
 
     def get_queryset(self):
         return Eksperymenty.objects.order_by('exp_name')
+
+
+class OporView(generic.edit.CreateView):
+    template_name = 'experiments/opor.html'
+    form_class = UserCreationForm
