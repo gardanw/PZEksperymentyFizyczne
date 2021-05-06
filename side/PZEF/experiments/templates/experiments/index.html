@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Eksperymenty</title>
+</head>
+<body>
+    {% if eksperymenty %}
+        <ul>
+        {% for eksperyment in eksperymenty %}
+            <li><a href="{{eksperyment.exp_name}}">{{ eksperyment.full_name }}</a></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No polls are available.</p>
+    {% endif %}
+</body>
+</html>
