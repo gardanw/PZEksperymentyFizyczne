@@ -1,0 +1,8 @@
+.exp_list a li{
+    vertical-align: middle;
+    height: 100%;
+    color: #a7e95c;
+    font-family: 'Montserrat';
+    font-size: 64px;
+    font-weight: 200;
+}

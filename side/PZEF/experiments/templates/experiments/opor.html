@@ -1,7 +1,9 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'experiments_css/opor.css' %}">
     <title>Opor</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript">
@@ -51,53 +53,6 @@
         });
 
     </script>
-    <style>
-        body {
-            background-color: #202020;
-        }
-
-        .control {
-            text-align: center;
-        }
-
-        label {
-            color: lightgrey;
-        }
-
-        input.display {
-            width: 3em;
-        }
-
-        .slider {
-            -webkit-appearance: none; /* Override default CSS styles */
-            appearance: none;
-            width: 100%; /* Full-width */
-            height: 10px; /* Specified height */
-            background: #d3d3d3; /* Grey background */
-            outline: none; /* Remove outline */
-            opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
-            -webkit-transition: .2s; /* 0.2 seconds transition on hover */
-            transition: opacity .2s;
-        }
-
-        .slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            background: #04AA6D;
-            cursor: pointer;
-        }
-
-        .slider::-moz-range-thumb {
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            background: #04AA6D;
-            cursor: pointer;
-        }
-    </style>
 
 </head>
 <body>
@@ -123,56 +78,31 @@
         <input class='display'/>
     </p>
 </div>
-<div>
-    <svg height="600" width="800">
-        <path id="o_path"
-              d=""
-              style="stroke: black;stroke-miterlimit: 10;"/>
-        <path id="t_path"
-              d=""
-              style="stroke: black;stroke-miterlimit: 10;"/>
+<div style="height: 100%; display: flex;">
+<div style="width:50%">
+    <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+        <g>
+            <path id="o_path"
+                  d=""
+                  style="stroke: black;stroke-miterlimit: 10;"/>
+            <path id="t_path"
+                  d=""
+                  style="stroke: black;stroke-miterlimit: 10;"/>
+        </g>
     </svg>
-    <svg height="600" width="800">
-        <style>
-            .R {
-                font: italic 40px serif;
-                fill: orangered;
-                stroke: tomato;
-            }
-
-            .eq {
-                font: italic 40px serif;
-                fill: wheat;
-            }
-
-            .ro {
-                font: italic 40px serif;
-                fill: #5b80b2;
-                stroke: #4ac1f7;
-            }
-
-            .L {
-                font: italic 40px serif;
-                fill: #5b80b2;
-                stroke: #4ac1f7;
-            }
-
-            .A {
-                font: italic 40px serif;
-                fill: #5b80b2;
-                stroke: #4ac1f7;
-            }
-        </style>
-        <text x="0" y="300" class="R">R</text>
-        <text x="60" y="300" class="eq">=</text>
-        <path d="M 100 287 300 287" style="stroke: wheat; stroke-width: 5"></path>
-        <text x="120" y="270" class="ro">&rho;</text>
-        <text x="220" y="270" class="L">L</text>
-        <text x="150" y="400" class="A">A</text>
+    </div>
+<div style="width:50%">
+    <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+        <g>
+            <text x="0" y="300" class="R">R</text>
+            <text x="60" y="300" class="eq">=</text>
+            <path d="M 100 287 300 287" style="stroke: wheat; stroke-width: 5"></path>
+            <text x="120" y="270" class="ro">&rho;</text>
+            <text x="220" y="270" class="L">L</text>
+            <text x="150" y="400" class="A">A</text>
+        </g>
     </svg>
 </div>
-<svg class="smok">
-
-</svg>
+    </div>
 </body>
 </html>

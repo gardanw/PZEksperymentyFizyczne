@@ -3,9 +3,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="{% static 'experiments_css/index.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'home_css/home.css' %}">
-    <title>Eksperymenty</title>
+    <title>Home</title>
 </head>
 <body>
 <div class="header">
@@ -29,19 +28,6 @@
             <li><a href="">O projekcie</a></li>
         </ol>
     </div>
-</div>
-<div>
-    {% if eksperymenty %}
-    <ul class="exp_list">
-        {% for eksperyment in eksperymenty %}
-        <a href="{{eksperyment.exp_name}}">
-            <li>{{ eksperyment.full_name }}</li>
-        </a>
-        {% endfor %}
-    </ul>
-    {% else %}
-    <p>No polls are available.</p>
-    {% endif %}
 </div>
 </body>
 </html>
