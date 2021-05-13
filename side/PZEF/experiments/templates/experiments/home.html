@@ -18,7 +18,7 @@
                 {% if eksperymenty %}
                 <ul class="exp_menu">
                     {% for eksperyment in eksperymenty %}
-                    <li><a href="{{eksperyment.exp_name}}">
+                    <li><a href="/experiments/{{eksperyment.exp_name}}">
                         {{ eksperyment.full_name }}
                     </a></li>
                     {% endfor %}
