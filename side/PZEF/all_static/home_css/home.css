@@ -31,7 +31,7 @@ body{
 }
 
 .logo_container h1 {
-    color: #4ac1f7;
+    color: coral;
     height: 100%;
     display: table-cell;
     vertical-align: middle;
@@ -42,6 +42,7 @@ body{
 
 .logo_container h1 span {
     font-weight: 800;
+    color: darkorange;
 }
 
 .navigation {
@@ -49,23 +50,38 @@ body{
     height: 100%;
 }
 
-.navigation a {
-    height: 100%;
+.navigation li {
+    height: 50%;
+    margin-top: 25px;
+    margin-bottom: 25px;
     display: table;
     float: left;
     padding: 0px 20px;
 }
 
-.navigation a:last-child {
+.navigation li:last-child {
     padding-right: 0;
 }
 
-.navigation a li {
-    display: table-cell;
-    vertical-align: middle;
+.navigation li a {
     height: 100%;
     color: #91c8ea;
     font-family: 'Montserrat';
     font-size: 16px;
     font-weight: 200;
 }
+
+.navigation li ul.exp_menu{
+    float: none;
+    display: none;
+    position: fixed;
+    margin-top: 3px;
+}
+
+.navigation li:hover ul.exp_menu{
+    display: grid;
+    background-color: #04AA6D;
+}
+
+
+

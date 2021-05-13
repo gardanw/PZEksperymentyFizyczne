@@ -43,3 +43,32 @@ input.display {
     background: #04AA6D;
     cursor: pointer;
 }
+
+.R {
+    font: italic 40px serif;
+    fill: orangered;
+    stroke: tomato;
+}
+
+.eq {
+    font: italic 40px serif;
+    fill: wheat;
+}
+
+.ro {
+    font: italic 40px serif;
+    fill: #5b80b2;
+    stroke: #4ac1f7;
+}
+
+.L {
+    font: italic 40px serif;
+    fill: #5b80b2;
+    stroke: #4ac1f7;
+}
+
+.A {
+    font: italic 40px serif;
+    fill: #5b80b2;
+    stroke: #4ac1f7;
+}
