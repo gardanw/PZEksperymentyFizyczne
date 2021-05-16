@@ -126,7 +126,6 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     BASE_DIR / 'external_libs',
-    BASE_DIR / 'static_css',
 ]
 
 STATIC_ROOT = BASE_DIR / 'all_static'

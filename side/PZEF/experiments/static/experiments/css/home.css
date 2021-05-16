@@ -80,7 +80,7 @@ body{
 
 .navigation li:hover ul.exp_menu{
     display: grid;
-    background-color: #04AA6D;
+    background-color: #333333;
 }
 
 

@@ -15,9 +15,12 @@ class IndexView(generic.ListView):
         return Eksperymenty.objects.order_by('exp_name')
 
 
-class OporView(generic.edit.CreateView):
+class OporView(generic.ListView):
     template_name = 'experiments/opor.html'
-    form_class = UserCreationForm
+    context_object_name = 'eksperymenty'
+
+    def get_queryset(self):
+        return Eksperymenty.objects.order_by('exp_name')
 
 
 class MrowkiView(generic.edit.CreateView):

@@ -3,106 +3,85 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="{% static 'experiments_css/opor.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'experiments/css/opor.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'experiments/css/home.css' %}">
     <title>Opor</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script type="text/javascript">
-
-        update_path = function (nL, nA, nro) {
-            var L = parseFloat($(nL).val()) + 5;
-            var A = (parseFloat($(nA).val()) + 1) * 17.5;
-            var ro = parseFloat($(nro).val());
-
-            var s_x = 400;
-            var s_y = 300;
-            var o_path;
-            var t_path;
-            var c;
-
-            var r = 200
-            var g = parseInt(255 - 255 * ro)
-            var b = 0
-
-
-            o_path = `M ${s_x - L} ${s_y - A} L ${s_x + L} ${s_y - A} A 10 5 90 0 1 ${s_x + L} ${s_y + A} L ${s_x - L} ${s_y + A} A 10 5 90 0 1 ${s_x - L} ${s_y - A} Z`;
-            t_path = `M ${s_x - L} ${s_y + A} A 10 5 90 0 1 ${s_x - L} ${s_y - A} A 10 5 90 0 1 ${s_x - L} ${s_y + A} Z`;
-            c = `#${r.toString(16)}${g.toString(16)}${b}${b}`;
-            $('#o_path').attr('d', o_path).css({fill: c});
-            $('#t_path').attr('d', t_path).css({fill: c});
-            $('.R').css({font: `italic ${200 * (ro * L) / A}px serif`})
-            $('.ro').css({font: `italic ${ro * 200}px serif`})
-            $('.L').css({font: `italic ${L}px serif`})
-            $('.A').css({font: `italic ${A}px serif`})
-
-        }
-
-        $(document).ready(function () {
-            update_path('#L_input', '#A_input', '#ro_input');
-
-
-            $('input.slider').bind("input", function () {
-                $(this).next('input.display').val($(this).val());
-                update_path('#L_input', '#A_input', '#ro_input');
-            }).trigger('input');
-
-            $('input.display').bind("input", function () {
-                $(this).prev('input.slider').val($(this).val());
-                update_path('#L_input', '#A_input', '#ro_input');
-            });
-
-        });
-
-    </script>
-
+    <script type="text/javascript" src="{% static 'experiments/js/opor.js' %}"></script>
 </head>
 <body>
+<div class="header">
+    <div class="inner_header">
+        <div class="logo_container">
+            <h1>Op&#243;r<span>ELEKTRYCZNY</span></h1>
+        </div>
+        <ol class="navigation">
+            <li><a href="/">Home</a></li>
+            <li><a href="/experiments/">Eksperymenty</a>
+                {% if eksperymenty %}
+                <ul class="exp_menu">
+                    {% for eksperyment in eksperymenty %}
+                    <li><a href="/experiments/{{eksperyment.exp_name}}">
+                        {{ eksperyment.full_name }}
+                    </a></li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </li>
+            <li><a href="">O projekcie</a></li>
+        </ol>
+    </div>
+</div>
+
 <div class="control">
     <p>
         <label for="ro_input" style="width:200px;">Op&#243;r w&#322;a&#347;ciwy:</label>
-        <input class='slider' id="ro_input" type="range" min="0.1" max="1.0" step="0.01" value="0.5"
-               style="width:200px;">
+        <input class='slider' id="ro_input" type="range" min="0.1" max="1.0" step="0.01" value="0.5">
         <input class='display'/>
+        <span class="jednostki">&#937;cm</span>
     </p>
 
     <p>
         <label for="L_input" style="width:200px;">D&#322;ugo&#347;&#263;:</label>
-        <input class='slider' id="L_input" type="range" min="1" max="200.0" step="0.01" value="100.0"
-               style="width:200px;">
+        <input class='slider' id="L_input" type="range" min="1" max="200.0" step="0.01" value="100.0">
         <input class='display'/>
+        <span class="jednostki">cm</span>
     </p>
 
     <p>
         <label for="A_input" style="width:200px;">Pole przekroju:</label>
-        <input class='slider' id="A_input" type="range" min="0.01" max="15.0" step="0.01" value="7.5"
-               style="width:200px;">
+        <input class='slider' id="A_input" type="range" min="0.01" max="15.0" step="0.01" value="7.5">
         <input class='display'/>
+        <span class="jednostki">cm<sup>2</sup></span>
     </p>
 </div>
 <div style="height: 100%; display: flex;">
-<div style="width:50%">
-    <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
-        <g>
-            <path id="o_path"
-                  d=""
-                  style="stroke: black;stroke-miterlimit: 10;"/>
-            <path id="t_path"
-                  d=""
-                  style="stroke: black;stroke-miterlimit: 10;"/>
-        </g>
-    </svg>
+    <div style="width:50%">
+        <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+            <g>
+                <path id="o_path"
+                      d=""
+                      style="stroke: black;stroke-miterlimit: 10;"/>
+                <path id="t_path"
+                      d=""
+                      style="stroke: black;stroke-miterlimit: 10;"/>
+            </g>
+        </svg>
     </div>
-<div style="width:50%">
-    <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
-        <g>
-            <text x="0" y="300" class="R">R</text>
-            <text x="60" y="300" class="eq">=</text>
-            <path d="M 100 287 300 287" style="stroke: wheat; stroke-width: 5"></path>
-            <text x="120" y="270" class="ro">&rho;</text>
-            <text x="220" y="270" class="L">L</text>
-            <text x="150" y="400" class="A">A</text>
-        </g>
-    </svg>
+    <div style="width:50%">
+        <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+            <g>
+                <text x="0" y="300" class="R">R</text>
+                <text x="60" y="300" class="eq">=</text>
+                <path d="M 100 287 300 287" style="stroke: wheat; stroke-width: 5"></path>
+                <text x="120" y="270" class="ro">&rho;</text>
+                <text x="220" y="270" class="L">L</text>
+                <text x="150" y="400" class="A">A</text>
+                <text x="310" y="300" class="eq">=</text>
+                <text x="350" y="300" class="results"><tspan id="num"></tspan><tspan id="omega">&#937;</tspan></text>
+            </g>
+        </svg>
+    </div>
 </div>
-    </div>
 </body>
 </html>
