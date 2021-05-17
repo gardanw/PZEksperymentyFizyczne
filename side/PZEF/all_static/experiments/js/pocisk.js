@@ -92,7 +92,11 @@ balistyczna = function (v0, theta) {
         x: X,
         y: Y,
         mode: 'lines',
-        type: 'scatter'
+        type: 'scatter',
+        line: {
+            width: 5,
+            color: '#04AA6D'
+        }
     };
 
     var data = [trace0];
@@ -110,7 +114,8 @@ balistyczna = function (v0, theta) {
                     color: '#d3d3d3',
                 }
             },
-            gridcolor: '#d3d3d3',
+            gridcolor: '#323232',
+            gridwidth: 0.5,
             zerolinecolor: '#d3d3d3',
             linecolor: '#d3d3d3',
             tickfont: {
@@ -124,7 +129,8 @@ balistyczna = function (v0, theta) {
                     color: '#d3d3d3',
                 }
             },
-            gridcolor: '#d3d3d3',
+            gridcolor: '#323232',
+            gridwidth: 0.5,
             linecolor: '#d3d3d3',
             tickfont: {
                 color: 'lightgrey'
@@ -146,7 +152,11 @@ balistyczna = function (v0, theta) {
         x: t,
         y: V,
         mode: 'lines',
-        type: 'scatter'
+        type: 'scatter',
+        line: {
+            width: 5,
+            color: '#04AA6D'
+        }
     };
 
     var data = [trace1];
@@ -164,7 +174,8 @@ balistyczna = function (v0, theta) {
                     color: '#d3d3d3',
                 }
             },
-            gridcolor: '#d3d3d3',
+            gridcolor: '#323232',
+            gridwidth: 0.5,
             zerolinecolor: '#d3d3d3',
             linecolor: '#d3d3d3',
             tickfont: {
@@ -178,7 +189,8 @@ balistyczna = function (v0, theta) {
                     color: '#d3d3d3',
                 }
             },
-            gridcolor: '#d3d3d3',
+            gridcolor: '#323232',
+            gridwidth: 0.5,
             linecolor: '#d3d3d3',
             tickfont: {
                 color: 'lightgrey'
@@ -200,7 +212,11 @@ balistyczna = function (v0, theta) {
         x: t,
         y: Y,
         mode: 'lines',
-        type: 'scatter'
+        type: 'scatter',
+        line: {
+            width: 5,
+            color: '#04AA6D'
+        }
     };
 
     var data = [trace2];
@@ -218,7 +234,8 @@ balistyczna = function (v0, theta) {
                     color: '#d3d3d3',
                 }
             },
-            gridcolor: '#d3d3d3',
+            gridcolor: '#323232',
+            gridwidth: 0.5,
             zerolinecolor: '#d3d3d3',
             linecolor: '#d3d3d3',
             tickfont: {
@@ -232,7 +249,8 @@ balistyczna = function (v0, theta) {
                     color: '#d3d3d3',
                 }
             },
-            gridcolor: '#d3d3d3',
+            gridcolor: '#323232',
+            gridwidth: 0.5,
             linecolor: '#d3d3d3',
             tickfont: {
                 color: 'lightgrey'
