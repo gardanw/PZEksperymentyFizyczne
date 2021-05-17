@@ -76,6 +76,7 @@ body{
     display: none;
     position: fixed;
     margin-top: 3px;
+    z-index: 100;
 }
 
 .navigation li:hover ul.exp_menu{
