@@ -1,103 +1,125 @@
 {% load static %}
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <script type="text/javascript" src="{% static 'django_brython/js/brython.js' %}"></script>
-    <script type="text/javascript" src="{% static 'django_brython/js/brython_stdlib.js' %}"></script>
-    <script type="text/javascript" src="{% static 'visualife.brython.js' %}"></script>
-    <style>
-
-        .center {
-            text-align: center;
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'experiments/css/home.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'experiments/css/mrowki.css' %}">
+    <title>Mrowki</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        plansza = function (k) {
+            var kratki = parseInt($(k).val());
+            console.log(parseInt($(k).val()))
+            var bok = parseInt(800 / kratki);
+            for (let i = 0; i < kratki; i++) {
+                for (let j = 0; j < kratki; j++) {
+                    let newRect = document.createElementNS('http://www.w3.org/2000/svg', "rect");
+                    newRect.setAttribute("x", `${i * bok}`);
+                    newRect.setAttribute("y", `${j * bok}`);
+                    newRect.setAttribute("width", `${bok}`);
+                    newRect.setAttribute("height", `${bok}`);
+                    newRect.setAttribute("fill", "black");
+                    newRect.setAttribute("id", `${i}-${j}`);
+                    document.getElementById('pole').appendChild(newRect)
+                }
+            }
         }
-    </style>
+
+
+        $(document).ready(function () {
+            plansza($('.display'))
+            var kratki = $('.display').val()
+
+            var zmiana_ruchu = {
+                "R": {'(0, -1)': [-1, 0], '(-1, 0)': [0, 1], '(0, 1)': [1, 0], '(1, 0)': [0, -1]},
+                "L": {'(0, -1)': [1, 0], '(1, 0)': [0, 1], '(0, 1)': [-1, 0], '(-1, 0)': [0, -1]},
+            }
+            var pos = [parseInt(kratki / 2), parseInt(kratki / 2)]
+            var kierunek_ruchu = [0, 1]
+
+            ruch = function () {
+                if (document.getElementById(`${pos[0]}-${pos[1]}`).getAttribute("fill") === 'black') {
+                    document.getElementById(`${pos[0]}-${pos[1]}`).setAttribute("fill", "white");
+                    kierunek_ruchu = zmiana_ruchu["R"][`(${kierunek_ruchu[0]}, ${kierunek_ruchu[1]})`];
+                    pos[0] = pos[0] + kierunek_ruchu[0];
+                    pos[1] = pos[1] + kierunek_ruchu[1];
+                } else {
+                    document.getElementById(`${pos[0]}-${pos[1]}`).setAttribute("fill", "black");
+                    kierunek_ruchu = zmiana_ruchu["L"][`(${kierunek_ruchu[0]}, ${kierunek_ruchu[1]})`];
+                    pos[0] = pos[0] + kierunek_ruchu[0];
+                    pos[1] = pos[1] + kierunek_ruchu[1];
+                }
+                if (pos[0] == -1){
+                    pos[0] = kratki - 1
+                }
+                if(pos[0] == kratki){
+                    pos[0] = 0
+                }
+                if (pos[1] == -1){
+                    pos[1] = kratki - 1
+                }
+                if(pos[1] == kratki){
+                    pos[1] = 0
+                }
+
+            }
+
+            var intervalId;
+            $('#start').on('click', function () {
+                clearInterval(intervalId);
+                intervalId = setInterval(ruch, 5);
+            });
+
+            $('#stop').on('click', function () {
+                clearInterval(intervalId);
+            })
+
+            $('#reset').on('click', function () {
+                clearInterval(intervalId);
+                $('#pole').empty();
+                plansza($('.display'));
+                kratki = $('.display').val()
+                pos = [parseInt(kratki / 2), parseInt(kratki / 2)]
+                kierunek_ruchu = [0, 1]
+            });
+        })
+
+
+    </script>
 </head>
-<!-- Initialize Brython, with the path prefix what you specified earlier in urls.py -->
-<body onload="brython({debug: 1, pythonpath: ['/brython/']})">
-<script type="text/python">
-from browser import html, document, console, alert,timer
-from visualife.core import HtmlViewport
-from visualife.calc.math_utils import regular_polygon
-from visualife.core.CanvasViewport import CanvasViewport
-coord_moves = {
-    "R": {(0, -1): (-1, 0), (-1, 0): (0, 1), (0, 1): (1, 0), (1, 0): (0, -1)},
-    "L": {(0, -1): (1, 0), (1, 0): (0, 1), (0, 1): (-1, 0), (-1, 0): (0, -1)},
-} #kierunek ruchu mrówki
-
-cnvs = document["canvas"].getContext("2d")
-drawing = CanvasViewport(cnvs, 700,700)
-
-def plansza(size):
-    p = [[0 for _ in range(size)] for _ in range(size)]
-    draw(p)
-    return p
-
-def draw(board):
-    b = ''
-    for i in board:
-        b += ''.join(map(str, i))
-    x = drawing.binary_map_2(b, size, size)
-    print(x)
-
-
-size = 15 #rozmiar planszy po której będzie chodzić mrówka
-board = plansza(size) #tworzę planszę po której będzie chodzić mrówka
-x, y = size // 2, size // 2 #pole na którym znajduje się mrówka
-koordynanty = (0, -1) #koordynanty
-pattern = "RL" #możliwe kierunki obrotu i ruchu mrówki
-idtimer = 1
-
-def simulate():
-    global x, y, koordynanty, board, idtimer
-    try: #sytuacja w której mrówka może się zderzyć ze ścianą- zatrzymanie programu i print maksymalnej liczby kroków
-        field = board[y][x] #współrzędne pola mrówki
-        direction = pattern[field] #kierunek ruchu mrówki
-        board[y][x] = (field + 1) % len(pattern) #kierunek ruchu mrówki
-        koordynanty = coord_moves[direction][koordynanty]
-        y, x = y + koordynanty[0], x + koordynanty[1]
-
-        if y < 0 or x < 0: #bez tego fragmentu jeśli nie dajemy warunku ze ściną
-            raise IndexError
-
-        draw(board) #update wizualizacji
-
-    except IndexError:
-        timer.clear_interval(idtimer)
-        idtimer = 1
-
-def start_sim(evt):
-    global idtimer
-    idtimer = timer.set_interval(simulate,1000)
-
-def stop_sim(evt):
-    global idtimer
-    timer.clear_interval(idtimer)
-    idtimer = 1
-    print("stop")
-
-def restart_sim(evt):
-    global x, y, koordynanty, board, idtimer
-    stop_sim(evt)
-    board = plansza(size)
-    x, y = size // 2, size // 2
-    koordynanty = (0, -1)
-
-document["start"].bind("click",start_sim)
-document["stop"].bind("click",stop_sim)
-document["restart_sim"].bind("click",restart_sim)
-
-
-
-</script>
-
-<div class="center">
-    <h3 style="padding:10px;">Mrowka</h3>
-    <div id="buttons">
-        <input type="button" id="start" value="Start">
-        <input type="button" id="stop" value="Stop">
-        <input type="button" id="restart_sim" value="Reset">
+<body>
+<div class="header">
+    <div class="inner_header">
+        <div class="logo_container">
+            <h1>Mr&#243;wki<span>LANGTONA</span></h1>
+        </div>
+        <ol class="navigation">
+            <li><a href="/">Home</a></li>
+            <li><a href="/experiments/">Eksperymenty</a>
+                {% if eksperymenty %}
+                <ul class="exp_menu">
+                    {% for eksperyment in eksperymenty %}
+                    <li><a href="/experiments/{{eksperyment.exp_name}}">
+                        {{ eksperyment.full_name }}
+                    </a></li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </li>
+            <li><a href="">O projekcie</a></li>
+        </ol>
     </div>
-    <canvas id="canvas" width="700" height="700"></canvas>
 </div>
+<input class='display' value="15"/>
+<input id="start" type="button" value="start">
+<input id="stop" type="button" value="stop">
+<input id="reset" type="button" value="reset">
+<div class="plansza">
+    <svg id="pole" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+
+    </svg>
+</div>
+
 </body>
 </html>

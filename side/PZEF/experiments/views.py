@@ -23,9 +23,12 @@ class OporView(generic.ListView):
         return Eksperymenty.objects.order_by('exp_name')
 
 
-class MrowkiView(generic.edit.CreateView):
+class MrowkiView(generic.ListView):
     template_name = 'experiments/mrowki.html'
-    form_class = UserCreationForm
+    context_object_name = 'eksperymenty'
+
+    def get_queryset(self):
+        return Eksperymenty.objects.order_by('exp_name')
 
 
 class PociskView(generic.ListView):
