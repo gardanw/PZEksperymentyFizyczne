@@ -114,6 +114,7 @@ balistyczna = function (v0, theta) {
                     color: '#d3d3d3',
                 }
             },
+            range: [0, 32000],
             gridcolor: '#323232',
             gridwidth: 0.5,
             zerolinecolor: '#d3d3d3',
@@ -129,6 +130,7 @@ balistyczna = function (v0, theta) {
                     color: '#d3d3d3',
                 }
             },
+            range: [0, 30000],
             gridcolor: '#323232',
             gridwidth: 0.5,
             linecolor: '#d3d3d3',
