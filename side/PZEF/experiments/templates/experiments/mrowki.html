@@ -7,86 +7,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'experiments/css/mrowki.css' %}">
     <title>Mrowki</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script type="text/javascript">
-        plansza = function (k) {
-            var kratki = parseInt($(k).val());
-            console.log(parseInt($(k).val()))
-            var bok = parseInt(800 / kratki);
-            for (let i = 0; i < kratki; i++) {
-                for (let j = 0; j < kratki; j++) {
-                    let newRect = document.createElementNS('http://www.w3.org/2000/svg', "rect");
-                    newRect.setAttribute("x", `${i * bok}`);
-                    newRect.setAttribute("y", `${j * bok}`);
-                    newRect.setAttribute("width", `${bok}`);
-                    newRect.setAttribute("height", `${bok}`);
-                    newRect.setAttribute("fill", "black");
-                    newRect.setAttribute("id", `${i}-${j}`);
-                    document.getElementById('pole').appendChild(newRect)
-                }
-            }
-        }
-
-
-        $(document).ready(function () {
-            plansza($('.display'))
-            var kratki = $('.display').val()
-
-            var zmiana_ruchu = {
-                "R": {'(0, -1)': [-1, 0], '(-1, 0)': [0, 1], '(0, 1)': [1, 0], '(1, 0)': [0, -1]},
-                "L": {'(0, -1)': [1, 0], '(1, 0)': [0, 1], '(0, 1)': [-1, 0], '(-1, 0)': [0, -1]},
-            }
-            var pos = [parseInt(kratki / 2), parseInt(kratki / 2)]
-            var kierunek_ruchu = [0, 1]
-
-            ruch = function () {
-                if (document.getElementById(`${pos[0]}-${pos[1]}`).getAttribute("fill") === 'black') {
-                    document.getElementById(`${pos[0]}-${pos[1]}`).setAttribute("fill", "white");
-                    kierunek_ruchu = zmiana_ruchu["R"][`(${kierunek_ruchu[0]}, ${kierunek_ruchu[1]})`];
-                    pos[0] = pos[0] + kierunek_ruchu[0];
-                    pos[1] = pos[1] + kierunek_ruchu[1];
-                } else {
-                    document.getElementById(`${pos[0]}-${pos[1]}`).setAttribute("fill", "black");
-                    kierunek_ruchu = zmiana_ruchu["L"][`(${kierunek_ruchu[0]}, ${kierunek_ruchu[1]})`];
-                    pos[0] = pos[0] + kierunek_ruchu[0];
-                    pos[1] = pos[1] + kierunek_ruchu[1];
-                }
-                if (pos[0] == -1){
-                    pos[0] = kratki - 1
-                }
-                if(pos[0] == kratki){
-                    pos[0] = 0
-                }
-                if (pos[1] == -1){
-                    pos[1] = kratki - 1
-                }
-                if(pos[1] == kratki){
-                    pos[1] = 0
-                }
-
-            }
-
-            var intervalId;
-            $('#start').on('click', function () {
-                clearInterval(intervalId);
-                intervalId = setInterval(ruch, 5);
-            });
-
-            $('#stop').on('click', function () {
-                clearInterval(intervalId);
-            })
-
-            $('#reset').on('click', function () {
-                clearInterval(intervalId);
-                $('#pole').empty();
-                plansza($('.display'));
-                kratki = $('.display').val()
-                pos = [parseInt(kratki / 2), parseInt(kratki / 2)]
-                kierunek_ruchu = [0, 1]
-            });
-        })
-
-
-    </script>
+    <script type="text/javascript" src="{% static 'experiments/js/mrowki.js' %}"></script>
 </head>
 <body>
 <div class="header">
@@ -111,12 +32,20 @@
         </ol>
     </div>
 </div>
-<input class='display' value="15"/>
-<input id="start" type="button" value="start">
-<input id="stop" type="button" value="stop">
-<input id="reset" type="button" value="reset">
+<div class="control">
+    <p>
+        <label for="rozmiar">Rozmiar planszy (NxN):</label>
+        <input class='display' id="rozmiar" value="15"/>
+        <label for="predkosc">Prędkość: 1</label>
+        <input class='slider' id="predkosc" type="range" min="1" max="100" step="1"/>
+        <span>100</span>
+    </p>
+    <input id="start" type="button" value="start">
+    <input id="stop" type="button" value="stop">
+    <input id="reset" type="button" value="reset">
+</div>
 <div class="plansza">
-    <svg id="pole" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+    <svg id="pole" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
 
     </svg>
 </div>
