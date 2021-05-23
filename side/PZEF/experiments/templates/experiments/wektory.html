@@ -1,0 +1,128 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'experiments/css/wektory.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'experiments/css/home.css' %}">
+    <title>Wektory</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+    <script type="text/javascript" src="{% static 'experiments/js/wektory.js' %}"></script>
+
+</head>
+<body>
+<div class="header">
+    <div class="inner_header">
+        <div class="logo_container">
+            <h1>Działania<span>WEKTOROWE</span></h1>
+        </div>
+        <ol class="navigation">
+            <li><a href="/">Home</a></li>
+            <li><a href="/experiments/">Eksperymenty</a>
+                {% if eksperymenty %}
+                <ul class="exp_menu">
+                    {% for eksperyment in eksperymenty %}
+                    <li><a href="/experiments/{{eksperyment.exp_name}}">
+                        {{ eksperyment.full_name }}
+                    </a></li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </li>
+            <li><a href="">O projekcie</a></li>
+        </ol>
+    </div>
+</div>
+<div class="content" style="display: flex">
+    <div class="plot" style="display: block; width: 48%">
+        <div id='input_vec'></div>
+        <div id='output_vec'></div>
+    </div>
+    <div class="control" style="display: block; width: 48%">
+        <p>
+            <span class="jednostki">Punkt A:</span>
+            <span class="jednostki">x = </span>
+            <input class='display' id="Ax" value="2"/>
+            <span class="jednostki">y = </span>
+            <input class='display' id="Ay" value="2"/>
+        </p>
+        <br>
+        <p>
+            <span class="jednostki">Punkt B:</span>
+            <span class="jednostki">x = </span>
+            <input class='display' id="Bx" value="2"/>
+            <span class="jednostki">y = </span>
+            <input class='display' id="By" value="3"/>
+        </p>
+        <br>
+        <p>
+            <span class="jednostki">Punkt C:</span>
+            <span class="jednostki">x = </span>
+            <input class='display' id="Cx" value="5"/>
+            <span class="jednostki">y = </span>
+            <input class='display' id="Cy" value="2"/>
+        </p>
+        <br>
+        <p>
+            <span class="jednostki">Punkt D:</span>
+            <span class="jednostki">x = </span>
+            <input class='display' id="Dx" value="5"/>
+            <span class="jednostki">y = </span>
+            <input class='display' id="Dy" value="4"/>
+        </p>
+        <br>
+        <p>
+            <span>Operacja: </span>
+            <select class="operacje">
+                <option>Dodawanie (AB+CD)</option>
+                <option>Odejmowanie (AB-CD)</option>
+                <option>Lloczyn skalarny (AB∘CD)</option>
+            </select>
+        </p>
+        <br>
+        <p>
+            <span class="formula1" id="wzor">AB<span
+                    class="znak"></span>CD = [(A<sub>x</sub>, A<sub>y</sub>), (B<sub>x</sub>, B<sub>y</sub>)]<span
+                    class="znak"></span>[(C<sub>x</sub>, C<sub>y</sub>), (D<sub>x</sub>, D<sub>y</sub>)] =<br>= [(A<sub>x</sub><span
+                    class="znak"></span>C<sub>x</sub>, A<sub>y</sub><span
+                    class="znak"></span>C<sub>y</sub>), (B<sub>x</sub><span
+                    class="znak"></span>D<sub>x</sub>, B<sub>y</sub><span class="znak"></span>D<sub>y</sub>)] = EF<br><br></span>
+        </p>
+
+        <p>
+            <span class="formula1" id="podstawienie">AB<span
+                    class="znak"></span>CD = [(<span class="pAx"></span>, <span class="pAy"></span>), (<span
+                    class="pBx"></span>, <span
+                    class="pBy"></span>)]<span
+                    class="znak"></span>[(<span class="pCx"></span>, <span class="pCy"></span>), (<span
+                    class="pDx"></span>, <span class="pDy"></span>)] =<br>= [<span id="wynik"></span>] = EF<br><br></span>
+        </p>
+
+        <p>
+            <span class="formula1">Długość wektora AB: <span id="dl_AB"></span><br><br></span>
+
+            <span class="formula1">Długość wektora CD: <span id="dl_CD"></span><br><br></span>
+
+            <span class="formula1">Długość wektora EF: <span id="dl_EF"></span><br><br></span>
+        </p>
+
+        <p>
+            <span class="formula2"
+                  id="wzor2">AB ∘ CD = [B<sub>x</sub> - A<sub>x</sub>, B<sub>y</sub> - A<sub>y</sub>] ∘ [D<sub>x</sub> - C<sub>x</sub>, D<sub>y</sub> - C<sub>y</sub>] =<br>= B<sub>x</sub> - A<sub>x</sub> ⋅ D<sub>x</sub> - C<sub>x</sub> + B<sub>y</sub> - A<sub>y</sub> ⋅ D<sub>y</sub> - C<sub>y</sub>
+            </span>
+        </p>
+        <br>
+        <p>
+            <span class="formula2" id="podstawienie2">
+AB ∘ CD = [<span class="pBx"></span> - <span class="pAx"></span>, <span class="pBy"></span> - <span class="pAy"></span>] ∘ [<span
+                    class="pDx"></span> - <span class="pCx"></span>, <span class="pDy"></span> - <span
+                    class="pCy"></span>] =<br>= <span class="BAx"></span> ⋅ <span class="DCx"></span> + <span
+                    class="BAy"></span> ⋅ <span class="DCy"></span> = <span class="wynik2"></span>
+
+            </span>
+        </p>
+    </div>
+</div>
+</body>
+</html>

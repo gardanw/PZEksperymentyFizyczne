@@ -8,4 +8,5 @@ urlpatterns = [
     path(r'opor/', views.OporView.as_view(), name='opor'),
     path(r'pocisk/', views.PociskView.as_view(), name='pocisk'),
     path(r'mrowki/', views.MrowkiView.as_view(), name='mrowki'),
+    path(r'wektory/', views.WektoryView.as_view(), name='wektory'),
 ]

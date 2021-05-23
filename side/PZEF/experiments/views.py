@@ -37,3 +37,11 @@ class PociskView(generic.ListView):
 
     def get_queryset(self):
         return Eksperymenty.objects.order_by('exp_name')
+
+
+class WektoryView(generic.ListView):
+    template_name = 'experiments/Wektory.html'
+    context_object_name = 'eksperymenty'
+
+    def get_queryset(self):
+        return Eksperymenty.objects.order_by('exp_name')

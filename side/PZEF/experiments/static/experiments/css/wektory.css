@@ -1,0 +1,12 @@
+body {
+    background-color: #202020;
+}
+
+.control {
+    text-align: center;
+    color: #d3d3d3;
+}
+
+input.display {
+    width: 3em;
+}
