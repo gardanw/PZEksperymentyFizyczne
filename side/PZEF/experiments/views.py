@@ -40,7 +40,7 @@ class PociskView(generic.ListView):
 
 
 class WektoryView(generic.ListView):
-    template_name = 'experiments/Wektory.html'
+    template_name = 'experiments/wektory.html'
     context_object_name = 'eksperymenty'
 
     def get_queryset(self):
