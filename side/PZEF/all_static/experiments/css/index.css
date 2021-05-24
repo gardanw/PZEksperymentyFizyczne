@@ -1,8 +1,18 @@
-.exp_list a li{
-    vertical-align: middle;
-    height: 100%;
-    color: #a7e95c;
-    font-family: 'Montserrat';
-    font-size: 64px;
-    font-weight: 200;
+img {
+    border: 5px solid #505050;
+}
+
+.lista {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+}
+
+img:hover {
+    border: 6px solid #04AA6D;
+}
+
+.lista div {
+    padding: 2px;
 }
