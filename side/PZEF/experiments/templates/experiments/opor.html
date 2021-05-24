@@ -1,39 +1,19 @@
+{% extends "experiments/base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="{% static 'experiments/css/opor.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'experiments/css/home.css' %}">
-    <link rel="shortcut icon" type="image/png" href="{% static 'experiments/img/favicon.ico' %}"/>
-    <title>Opor</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script type="text/javascript" src="{% static 'experiments/js/opor.js' %}"></script>
-</head>
-<body>
-<div class="header">
-    <div class="inner_header">
-        <div class="logo_container">
-            <h1>Op&#243;r<span>ELEKTRYCZNY</span></h1>
-        </div>
-        <ol class="navigation">
-            <li><a href="/">Home</a></li>
-            <li><a href="/experiments/">Eksperymenty</a>
-                {% if eksperymenty %}
-                <ul class="exp_menu">
-                    {% for eksperyment in eksperymenty %}
-                    <li><a href="/experiments/{{eksperyment.exp_name}}">
-                        {{ eksperyment.full_name }}
-                    </a></li>
-                    {% endfor %}
-                </ul>
-                {% endif %}
-            </li>
-            <li><a href="">O projekcie</a></li>
-        </ol>
-    </div>
-</div>
 
+{% block Title %}Opor{% endblock %}
+
+{% block javascript %}
+<script type="text/javascript" src="{% static 'experiments/js/opor.js' %}"></script>
+{% endblock %}
+
+{% block stylesheet %}
+<link rel="stylesheet" type="text/css" href="{% static 'experiments/css/opor.css' %}">
+{% endblock %}
+
+{% block naglowek %}Op&#243;r<span>ELEKTRYCZNY</span>{% endblock %}
+
+{% block content %}
 <div class="control">
     <p>
         <label for="ro_input" style="width:200px;">Op&#243;r w&#322;a&#347;ciwy:</label>
@@ -84,5 +64,4 @@
         </svg>
     </div>
 </div>
-</body>
-</html>
+{% endblock %}

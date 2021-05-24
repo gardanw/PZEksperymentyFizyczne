@@ -1,36 +1,15 @@
+{% extends "experiments/base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="{% static 'experiments/css/index.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'experiments/css/home.css' %}">
-    <link rel="shortcut icon" type="image/png" href="{% static 'experiments/img/favicon.ico' %}"/>
-    <title>Eksperymenty</title>
-</head>
-<body>
-<div class="header">
-    <div class="inner_header">
-        <div class="logo_container">
-            <h1>Lista<span>EKSPERYMENT&#211;W</span></h1>
-        </div>
-        <ol class="navigation">
-            <li><a href="/">Home</a></li>
-            <li><a href="/experiments/">Eksperymenty</a>
-                {% if eksperymenty %}
-                <ul class="exp_menu">
-                    {% for eksperyment in eksperymenty %}
-                    <li><a href="{{eksperyment.exp_name}}">
-                        {{ eksperyment.full_name }}
-                    </a></li>
-                    {% endfor %}
-                </ul>
-                {% endif %}
-            </li>
-            <li><a href="">O projekcie</a></li>
-        </ol>
-    </div>
-</div>
+
+{% block Title %}Eksperymenty{% endblock %}
+
+{% block stylesheet %}
+<link rel="stylesheet" type="text/css" href="{% static 'experiments/css/index.css' %}">
+{% endblock %}
+
+{% block naglowek %}Lista<span>EKSPERYMENT&#211;W</span>{% endblock %}
+
+{% block content %}
 <div class="lista">
     <div>
         <div>
@@ -57,5 +36,4 @@
         </div>
     </div>
 </div>
-</body>
-</html>
+{% endblock %}

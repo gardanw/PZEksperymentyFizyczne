@@ -1,41 +1,19 @@
+{% extends "experiments/base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="{% static 'experiments/css/pocisk.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'experiments/css/home.css' %}">
-    <link rel="shortcut icon" type="image/png" href="{% static 'experiments/img/favicon.ico' %}"/>
-    <title>Pocisk</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
-    <script type="text/javascript" src="{% static 'experiments/js/pocisk.js' %}"></script>
-</head>
-<body>
-<div class="header">
-    <div class="inner_header">
-        <div class="logo_container">
-            <h1>Krzywa<span>BALISTYCZNA</span></h1>
-        </div>
-        <ol class="navigation">
-            <li><a href="/">Home</a></li>
-            <li><a href="/experiments/">Eksperymenty</a>
-                {% if eksperymenty %}
-                <ul class="exp_menu">
-                    {% for eksperyment in eksperymenty %}
-                    <li><a href="/experiments/{{eksperyment.exp_name}}">
-                        {{ eksperyment.full_name }}
-                    </a></li>
-                    {% endfor %}
-                </ul>
-                {% endif %}
-            </li>
-            <li><a href="">O projekcie</a></li>
-        </ol>
-    </div>
-</div>
 
+{% block Title %}Pocisk{% endblock %}
 
+{% block javascript %}
+<script type="text/javascript" src="{% static 'experiments/js/pocisk.js' %}"></script>
+{% endblock %}
+
+{% block stylesheet %}
+<link rel="stylesheet" type="text/css" href="{% static 'experiments/css/pocisk.css' %}">
+{% endblock %}
+
+{% block naglowek %}Krzywa<span>BALISTYCZNA</span>{% endblock %}
+
+{% block content %}
 <div class="content" style="display: flex">
     <div class="plot" style="width: 50%; display: block;">
         <div id='balistyczna' style=""></div>
@@ -67,5 +45,4 @@
         </div>
     </div>
 </div>
-</body>
-</html>
+{% endblock %}

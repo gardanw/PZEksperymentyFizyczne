@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block Title %}{% endblock %}</title>
+    <link rel="shortcut icon" type="image/png" href="{% static 'experiments/img/favicon.ico' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'experiments/css/base.css' %}">
+    {% block stylesheet %}{% endblock %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+    {% block javascript %}{% endblock %}
+
+</head>
+<body>
+<div class="header">
+    <div class="inner_header">
+        <div class="logo_container">
+            <h1>{% block naglowek %}{% endblock %}</h1>
+        </div>
+        <ol class="navigation">
+            <li><a href="/">Home</a></li>
+            <li><a href="/experiments/">Eksperymenty</a>
+                {% if eksperymenty %}
+                <ul class="exp_menu">
+                    {% for eksperyment in eksperymenty %}
+                    <li><a href="/experiments/{{eksperyment.exp_name}}">
+                        {{ eksperyment.full_name }}
+                    </a></li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </li>
+            <li><a href="">O projekcie</a></li>
+        </ol>
+    </div>
+</div>
+
+{% block content %}{% endblock %}
+</body>
+</html>
