@@ -30,18 +30,31 @@
         </ol>
     </div>
 </div>
-<div>
-    {% if eksperymenty %}
-    <ul class="exp_list">
-        {% for eksperyment in eksperymenty %}
-        <a href="{{eksperyment.exp_name}}">
-            <li>{{ eksperyment.full_name }}</li>
-        </a>
-        {% endfor %}
-    </ul>
-    {% else %}
-    <p>No polls are available.</p>
-    {% endif %}
+<div class="lista">
+    <div>
+        <div>
+            <a href="mrowki">
+                <img src="{% static 'experiments/img/mrowki.png' %}">
+            </a>
+        </div>
+        <div>
+            <a href="pocisk">
+                <img src="{% static 'experiments/img/pocisk.png' %}">
+            </a>
+        </div>
+    </div>
+    <div>
+        <div>
+            <a href="opor">
+                <img src="{% static 'experiments/img/opor.png' %}">
+            </a>
+        </div>
+        <div>
+            <a href="wektory">
+                <img src="{% static 'experiments/img/wektory.png' %}">
+            </a>
+        </div>
+    </div>
 </div>
 </body>
 </html>
