@@ -1,0 +1,70 @@
+{% extends "experiments/base.html" %}
+{% load static %}
+
+{% block Title %}Ncial{% endblock %}
+{% block naglowek %}Symulacja<span xmlns="http://www.w3.org/1999/html">GRAWITACJI</span>{% endblock %}
+
+{% block javascript %}
+<script type="text/javascript" src="{% static 'experiments/js/ncial.js' %}"></script>
+{% endblock %}
+
+{% block stylesheet %}
+<link rel="stylesheet" type="text/css" href="{% static 'experiments/css/ncial.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="content" style="display: flex">
+    <div class="plot" style="width: 48%">
+        <div id="myDiv"></div>
+    </div>
+    <div class="control" style="width: 48%">
+        <div class="checkboxs">
+            <input type="checkbox" id="trajectory" value="Trajektoria" checked>
+            <label for="trajectory"> Pokaż trajektorie </label><br>
+            <input type="checkbox" id="osie" value="Osie">
+            <label for="osie"> Zablokuj osie</label><br>
+        </div>
+        <br>
+        <div class="radiocheck">
+            <input type="radio" class="ukl" name="uklad" id="3b" checked>
+            <label for="3b">Trzy jednakowe ciała</label><br>
+            <input type="radio" class="ukl" name="uklad" id="szk">
+            <label for="szk">Układ Słońce-Ziemia-Księżyc</label><br>
+            <input type="radio" class="ukl" name="uklad" id="zk">
+            <label for="zk">Układ Ziemia-Księżyc</label><br>
+            <input type="radio" class="ukl" name="uklad" id="randomN">
+            <label for="randomN">Losowe N ciał</label><br>
+        </div>
+        <br>
+        <div class="castom" style="display: none">
+            <label for="l_cial">Liczba ciał: </label>
+            <input type="number" id="l_cial" min="2" max="30" value="5"><br>
+            <label for="G">"Stała grawitacji": </label>
+            <input type="number" id="G" value="1" step="0.001"><br>
+            <label for="dt">Krok czasowy: </label>
+            <input type="number" id="dt" min="0.001" max="1" value="0.01" step="0.001"><br>
+            <span>Zakres dla losowania mas</span>
+            <label for="m_min">od: </label>
+            <input type="number" id="m_min" min="0.001" value="0.1" step="0.001">
+            <label for="m_max">do: </label>
+            <input type="number" id="m_max" min="0.001" value="5" step="0.001"><br>
+            <span>Zakres dla losowania x/y</span>
+            <label for="p_min">od: </label>
+            <input type="number" id="p_min" value="-5">
+            <label for="p_max">do: </label>
+            <input type="number" id="p_max" value="5"><br>
+            <span>Zakres dla losowania prędkości</span>
+            <label for="v_min">od: </label>
+            <input type="number" id="v_min" value="0.1">
+            <label for="v_max">do: </label>
+            <input type="number" id="v_max" value="2"><br>
+            <input type="button" id="generuj" value="losuj">
+        </div>
+        <br>
+        <div class="buttons">
+            <input type="button" id="start" value="start">
+            <input type="button" id="stop" value="stop">
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends "experiments/base.html" %}
+{% load static %}
+
+{% block Title %}Opor{% endblock %}
+
+{% block javascript %}
+<script type="text/javascript" src="{% static 'experiments/js/opor.js' %}"></script>
+{% endblock %}
+
+{% block stylesheet %}
+<link rel="stylesheet" type="text/css" href="{% static 'experiments/css/opor.css' %}">
+{% endblock %}
+
+{% block naglowek %}Op&#243;r<span>ELEKTRYCZNY</span>{% endblock %}
+
+{% block content %}
+<div class="control">
+    <p>
+        <label for="ro_input" style="width:200px;">Op&#243;r w&#322;a&#347;ciwy:</label>
+        <input class='slider' id="ro_input" type="range" min="0.1" max="1.0" step="0.01" value="0.5">
+        <input class='display'/>
+        <span class="jednostki">&#937;cm</span>
+    </p>
+
+    <p>
+        <label for="L_input" style="width:200px;">D&#322;ugo&#347;&#263;:</label>
+        <input class='slider' id="L_input" type="range" min="1" max="200.0" step="0.01" value="100.0">
+        <input class='display'/>
+        <span class="jednostki">cm</span>
+    </p>
+
+    <p>
+        <label for="A_input" style="width:200px;">Pole przekroju:</label>
+        <input class='slider' id="A_input" type="range" min="0.01" max="15.0" step="0.01" value="7.5">
+        <input class='display'/>
+        <span class="jednostki">cm<sup>2</sup></span>
+    </p>
+</div>
+<div style="height: 100%; display: flex;">
+    <div style="width:45%">
+        <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+            <g>
+                <path id="o_path"
+                      d=""
+                      style="stroke: black;stroke-miterlimit: 10;"/>
+                <path id="t_path"
+                      d=""
+                      style="stroke: black;stroke-miterlimit: 10;"/>
+            </g>
+        </svg>
+    </div>
+    <div style="width:45%">
+        <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+            <g transform="translate(150)">
+                <text x="0" y="300" class="R">R</text>
+                <text x="60" y="300" class="eq">=</text>
+                <path d="M 100 287 300 287" style="stroke: wheat; stroke-width: 5"></path>
+                <text x="120" y="270" class="ro">&rho;</text>
+                <text x="220" y="270" class="L">L</text>
+                <text x="150" y="400" class="A">A</text>
+                <text x="310" y="300" class="eq">=</text>
+                <text x="350" y="300" class="results"><tspan id="num"></tspan><tspan id="omega">&#937;</tspan></text>
+            </g>
+        </svg>
+    </div>
+</div>
+{% endblock %}

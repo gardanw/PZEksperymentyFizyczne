@@ -1,0 +1,48 @@
+{% extends "experiments/base.html" %}
+{% load static %}
+
+{% block Title %}Pocisk{% endblock %}
+
+{% block javascript %}
+<script type="text/javascript" src="{% static 'experiments/js/pocisk.js' %}"></script>
+{% endblock %}
+
+{% block stylesheet %}
+<link rel="stylesheet" type="text/css" href="{% static 'experiments/css/pocisk.css' %}">
+{% endblock %}
+
+{% block naglowek %}Krzywa<span>BALISTYCZNA</span>{% endblock %}
+
+{% block content %}
+<div class="content" style="display: flex">
+    <div class="plot" style="width: 50%; display: block;">
+        <div id='balistyczna' style=""></div>
+        <div id='predkosc' style=""></div>
+        <div id='wysokosc' style=""></div>
+    </div>
+    <div style="width: 50%; display: block;">
+        <div class="control">
+            <p>
+                <label for="theta" style="width:200px;">&#920;:</label>
+                <input class='slider' id="theta" type="range" step="0.001">
+                <input class='display'/>
+                <span class="jednostki">rad</span>
+            </p>
+
+            <p>
+                <label for="v0" style="width:200px;">V<sub>0</sub>:</label>
+                <input class='slider' id="v0" type="range" min="10" max="1800.0">
+                <input class='display'/>
+                <span class="jednostki">m/s</span>
+            </p>
+        </div>
+        <div class="info">
+            <p><span>Przyspieszenie ziemskie (g) = <span id="ig"></span>m/s<sup>2</sup></span></p>
+            <p><span>Współczynnik siły oporu na jednostkę masy (α) = <span id="ialpha"></span></span></p>
+            <p><span>Kąt początkowy (&#920;) = <span id="ithete"></span>rad</span></p>
+            <p><span>Prędkość początkowa (V<sub>0</sub>) = <span id="iv0"></span>m/s</span></p>
+            <p><span>Czas lotu pocisku (t) = <span id="it"></span>s</span></p>
+        </div>
+    </div>
+</div>
+{% endblock %}
