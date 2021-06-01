@@ -1,6 +1,5 @@
 len_vec = function (X, Y) {
-    var l = Math.sqrt((X[0] - X[1]) ** 2 + (Y[0] - Y[1]) ** 2)
-    return l
+    return Math.sqrt((X[0] - X[1]) ** 2 + (Y[0] - Y[1]) ** 2)
 }
 
 rysowanie_in = function (AB, CD, grot_vec1, grot_vec2) {
