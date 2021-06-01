@@ -1,0 +1,13 @@
+Na razie są tu różne myśli, co w opisie projektu powinno się znaleźć, wkrótce zostaną składnie zebrane i wrzucone na stronę:
+
+
+Strona jest efektem końcowym zespołowego projektu studenckiego "Aplikacja webowa z eksperymentami fizycznymi", realizowanego w ramach przedmiotu Programowanie Zespołowe. 
+
+Członkowie projektu:
+* Maria Kalinowska (kod symulacji: Mrówki Langtona, Opór elektryczny, Krzywa balistyczna, działania wektorowe)
+* Klara Szular (kod symulacji: Problem 3 ciał, Smok fraktalny)
+* Damian Sztuczka (uporządkowanie i przystosowanie kodów do wersji webowej, projekt i realizacja strony internetowej, sprawdzenie poprawności symulacji pod względem fizycznym)
+
+Opienkun projektu: mgr Paweł Gora, dr hab. prof. ucz. Jarosław Żygierewicz
+
+Kody symulacji zostały napisane pierwotnie w Pythonie, jednak nie udało się ich w takiej postaci umieścić na stronie, dlatego zostały przepisane do JavaScripta. Strona napisana jest trochę w HTMLu, trochę w JavaScript, trochę w Pythonie (???)
