@@ -11,3 +11,7 @@ Członkowie projektu:
 Opienkun projektu: mgr Paweł Gora, dr hab. prof. ucz. Jarosław Żygierewicz
 
 Kody symulacji zostały napisane pierwotnie w Pythonie, jednak nie udało się ich w takiej postaci umieścić na stronie, dlatego zostały przepisane do JavaScripta. Strona napisana jest trochę w HTMLu, trochę w JavaScript, trochę w Pythonie (???)
+
+Symulacje zostały napisane w Pythonie (kod dostępny na githubie) oraz przepisane na JavaScript w celu implementacji wersji webowej.
+Szkieletem strony jest pythonowy framework Django. Odpowiada on za generowanie stron html oraz obsługę endpointów.
+Strona została postawionoa na microsoftowej chmurze Azure.
