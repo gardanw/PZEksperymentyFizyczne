@@ -7,6 +7,9 @@ img {
     margin-left: auto;
     margin-right: auto;
     padding: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 }
 
 img:hover {
