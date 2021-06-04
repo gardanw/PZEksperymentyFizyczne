@@ -10,4 +10,5 @@ urlpatterns = [
     path(r'mrowki/', views.MrowkiView.as_view(), name='mrowki'),
     path(r'wektory/', views.WektoryView.as_view(), name='wektory'),
     path(r'ncial/', views.NCialView.as_view(), name='ncial'),
+    path(r'smok/', views.SmokView.as_view(), name='smok'),
 ]

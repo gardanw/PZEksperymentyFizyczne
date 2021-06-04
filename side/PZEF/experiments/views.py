@@ -54,3 +54,11 @@ class NCialView(generic.ListView):
 
     def get_queryset(self):
         return Eksperymenty.objects.order_by('exp_name')
+
+
+class SmokView(generic.ListView):
+    template_name = 'experiments/smok.html'
+    context_object_name = 'eksperymenty'
+
+    def get_queryset(self):
+        return Eksperymenty.objects.order_by('exp_name')

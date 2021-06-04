@@ -1,0 +1,28 @@
+{% extends "experiments/base.html" %}
+{% load static %}
+
+{% block Title %}smok{% endblock %}
+
+{% block javascript %}
+<script type="text/javascript" src="{% static 'experiments/js/smok.js' %}"></script>
+{% endblock %}
+
+{% block stylesheet %}
+<link rel="stylesheet" type="text/css" href="{% static 'experiments/css/smok.css' %}">
+{% endblock %}
+
+{% block naglowek %}Smok<span>FRAKTALNY</span>{% endblock %}
+
+{% block content %}
+<div class="content" style="display: block">
+    <div class="control" style="display: block">
+        <label for="wielkosc">0</label>
+        <input class="slider" id="wielkosc" type="range" min="0" max="15" value="0">
+        <label for="wielkosc">15</label>
+    </div>
+    <div class="plot" style="display: block">
+        <div id='smok'></div>
+    </div>
+
+</div>
+{% endblock %}
