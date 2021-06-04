@@ -5,7 +5,7 @@ function gen_smok(n, s = [nj.array([0, 0]), nj.array([1, 0])]) {
     }
     let smok = s
     if (smok.length < 2 ** n + 1) {
-        for (let i = Math.round(smok.length / 2) - 1; i < n; i++) {
+        while (smok.length < 2 ** n + 1) {
             let new_p = [smok[smok.length - 1].add(translate_move[(smok[smok.length - 1].subtract(smok[smok.length - 2])).toString()])]
             for (let j = 2; j < smok.length; j++) {
                 new_p.push(new_p[new_p.length - 1].add(translate_move[(smok[smok.length - j].subtract(smok[smok.length - j - 1])).toString()]))
@@ -175,13 +175,13 @@ function rl() {
 }
 
 $(document).ready(function () {
-    let s = gen_smok(0)
+    var s = gen_smok(0)
     var p_xy = get_xy(s)
     var p_value = 0
     plot_smok(p_xy)
     $('input.slider').bind("input", function () {
         let t_value = parseInt($(this).val())
-        s = gen_smok(t_value)
+        s = gen_smok(t_value, s)
         let t_xy = get_xy(s)
         anim_plot(t_xy, p_xy, t_value, p_value)
         setTimeout(rl, 500);
