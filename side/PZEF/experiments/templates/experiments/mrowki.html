@@ -32,3 +32,16 @@
     </svg>
 </div>
 {% endblock %}
+{% block teoria_display %}{% endblock %}
+{% block teoria %}
+Mrówki Langtona — prosty automat komórkowy wymyślony i opisany przez Chrisa Langtona w 1986 roku.<br>
+<br>
+Algorytm:<br>
+1. Wybranie komórki („mrówki”) i ustalenie kierunku ruchu,<br>
+2. jeśli mrówka znajduje się na polu:<br>
+a) czarnym — zmienia jego kolor na własny, obraca się o 90° w prawo i idzie do przodu,<br>
+b) innym niż czarne — zmienia jego kolor na czarny, obraca się o 90° w lewo i idzie do przodu,<br>
+3. powtórz punkt 2.<br>
+<br>
+Mrówki poruszają się po planszy o periodycznych warunkach brzegowych. Można powiedzieć, że znajdują się we wszechświecie w kształcie torusa (pączka z dziurką).
+{% endblock %}

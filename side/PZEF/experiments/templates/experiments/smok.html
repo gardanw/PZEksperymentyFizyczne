@@ -11,7 +11,7 @@
 <link rel="stylesheet" type="text/css" href="{% static 'experiments/css/smok.css' %}">
 {% endblock %}
 
-{% block naglowek %}Smok<span>FRAKTALNY</span>{% endblock %}
+{% block naglowek %}Smok<span>HEIGHWAYA</span>{% endblock %}
 
 {% block content %}
 <div class="content" style="display: block">
@@ -25,4 +25,16 @@
     </div>
 
 </div>
+{% endblock %}
+{% block teoria_display %}{% endblock %}
+{% block teoria %}
+Fraktal – w znaczeniu potocznym oznacza zwykle obiekt samopodobny albo „nieskończenie złożony”.<br>
+<br>
+Jednym z bardziej znanych fraktali jest smok Heighwaya. Opisać go można za pomocą systemu Lindenmayera:<br>
+<li style="list-style:circle">kąt 90°,</li>
+<li style="list-style:circle">ciąg początkowy <i><b>FX</b></i>,</li>
+<li style="list-style:circle">zasady zastępowania:
+        <li style="list-style:disc"><i><b>X</b></i> ↦ <i><b>X</b></i> ㅗ <i><b>YF</b></i>+</li>
+        <li style="list-style:disc"><i><b>Y</b></i> ↦ –<i><b>FX</b></i> –<i><b>Y</b></i>.</li>
+</li>
 {% endblock %}

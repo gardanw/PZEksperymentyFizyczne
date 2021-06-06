@@ -90,3 +90,34 @@ body{
     z-index: 100;
 }
 
+#panel {
+	display:none;
+	width:300px;
+    margin-top: 80px;
+	position:absolute;
+	overflow-y:auto;
+	z-index:1001;
+	top:0;
+	right:-306px;
+	background-color: #414141;
+    border: 6px solid #04AA6D;
+    color: #e8e8e8;
+}
+#button-hide-panel {
+    display:none;
+    position: fixed;
+    z-index:1001;
+    right: 0;
+}
+#button-hide-panel img{
+    width: 50px;
+    height: 50px;
+}
+#button-show-panel {
+    display:flex;
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    z-index:1001;
+    right: 0;
+}

@@ -1,0 +1,13 @@
+$(document).ready(function()
+{
+	$("#button-show-panel").click(function(){
+		$('#panel').show().animate({"right":"0px"},200);
+		$("#button-hide-panel").show().animate({"right":"306px"},200);
+		$("#button-show-panel").animate({"right":"306px"},200).hide();
+	});
+	$("#button-hide-panel").click(function(){
+		$('#panel').animate({"right":"-312px"},200).hide();
+		$("#button-hide-panel").animate({"right":"0px"},200).hide();
+		$("#button-show-panel").show().animate({"right":"0px"},200);
+	});
+});

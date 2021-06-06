@@ -10,6 +10,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
     <script src="https://cdn.jsdelivr.net/gh/nicolaspanel/numjs@0.15.1/dist/numjs.min.js"></script>
+    <script type="text/javascript" src="{% static 'experiments/js/base.js' %}"></script>
     {% block javascript %}{% endblock %}
 
 </head>
@@ -36,7 +37,19 @@
         </ol>
     </div>
 </div>
-
+<div class="teoria" {% block teoria_display %} style="display: none" {% endblock %}>
+    <a id="button-show-panel">
+        <img src="{% static 'experiments/img/info.png' %}" alt="i">
+    </a>
+    <a id="button-hide-panel">
+        <img src="{% static 'experiments/img/info.png' %}" alt="i">
+    </a>
+    <div id="panel">
+        <p>
+            <span>{% block teoria %}Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse et rutrum arcu. Donec odio quam, vulputate et dignissim eget, vestibulum a urna. Curabitur nisi erat, pulvinar at lectus eget, porta interdum enim. Proin mollis, dolor sed vehicula tempus, metus metus egestas diam, in lacinia justo tortor ac dolor. Fusce ipsum est, placerat quis velit ac, feugiat tristique augue. Nullam vehicula suscipit augue, ut consectetur odio venenatis et. Nulla sed nibh condimentum, commodo felis in, imperdiet lorem. Cras est nibh, egestas eu pulvinar ut, ornare eu lacus. Nulla sit amet turpis leo. Nam ultricies odio nec ligula tincidunt, ac semper eros dapibus. Proin condimentum ut enim a cursus. Sed rhoncus, magna lobortis vehicula sodales, mauris ante tempor orci, a sodales ante ipsum sed nisi.{% endblock %}</span>
+        </p>
+    </div>
+</div>
 {% block content %}{% endblock %}
 </body>
 </html>
