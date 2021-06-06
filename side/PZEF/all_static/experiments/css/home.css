@@ -1,0 +1,18 @@
+.content {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    color: #d3d3d3;
+    text-align: center;
+    font-size: x-large;
+}
+
+#github {
+    width: 30px;
+    height: 30px;
+    border: 2px solid black;
+}
+
+#github:hover{
+    border: 2px solid #474747;
+}
