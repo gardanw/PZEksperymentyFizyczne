@@ -3,15 +3,14 @@ Na razie są tu różne myśli, co w opisie projektu powinno się znaleźć, wkr
 
 Strona jest efektem końcowym zespołowego projektu studenckiego "Aplikacja webowa z eksperymentami fizycznymi", realizowanego w ramach przedmiotu Programowanie Zespołowe. 
 
-Członkowie projektu:
-* Maria Kalinowska (kod symulacji: Mrówki Langtona, Opór elektryczny, Krzywa balistyczna, działania wektorowe)
-* Klara Szular (kod symulacji: Problem 3 ciał, Smok fraktalny)
-* Damian Sztuczka (uporządkowanie i przystosowanie kodów do wersji webowej, projekt i realizacja strony internetowej, sprawdzenie poprawności symulacji pod względem fizycznym)
+Członkowie projektu oraz podział zadań:
+* Maria Kalinowska (kody symulacji: Mrówki Langtona, Opór elektryczny, Krzywa balistyczna, działania wektorowe)
+* Klara Szular (kody symulacji: Problem 3 ciał, Smok fraktalny)
+* Damian Sztuczka (uporządkowanie i przystosowanie kodów do wersji webowej, projekt i realizacja strony internetowej, sprawdzenie poprawności symulacji pod względem fizycznym oraz przygotowanie objaśnień do symulacji)
 
 Opienkun projektu: mgr Paweł Gora, dr hab. prof. ucz. Jarosław Żygierewicz
 
-Kody symulacji zostały napisane pierwotnie w Pythonie, jednak nie udało się ich w takiej postaci umieścić na stronie, dlatego zostały przepisane do JavaScripta. Strona napisana jest trochę w HTMLu, trochę w JavaScript, trochę w Pythonie (???)
+Celem projektu było stworzenie aplikacji webowej z symulacjami wybranych eksperymentów fizycznych. Dodatkowymi celami były także nauka planowania pracy w zespole, współdziałania i osiągania wyznaczonego celu.
 
-Symulacje zostały napisane w Pythonie (kod dostępny na githubie) oraz przepisane na JavaScript w celu implementacji wersji webowej.
-Szkieletem strony jest pythonowy framework Django. Odpowiada on za generowanie stron html oraz obsługę endpointów.
-Strona została postawionoa na microsoftowej chmurze Azure.
+Symulacje zostały napisane w Pythonie (kod dostępny na githubie), sprawdzone przez innych członków zespołu oraz przepisane na JavaScript w celu implementacji wersji webowej. Do symulacji zostały również dołączone objaśnienia ich działania.
+Strona została postawiona na chmurze Azure Microsoftu. Opiera się ona o framework Pythona Django, który odpowiada za generowanie stron html oraz obsługę endpointów. Kod źródłowy symulacji oraz strony dostępny jest wraz z historią zmian na githubie projektu: https://github.com/gardanw/PZEksperymentyFizyczne
