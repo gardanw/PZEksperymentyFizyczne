@@ -1,0 +1,29 @@
+.content {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    color: #d3d3d3;
+    font-size: x-large;
+    margin-right: 15%;
+    margin-left: 15%;
+    margin-top: 30px;
+}
+a:link {
+  color: coral;
+}
+
+a:visited {
+  color: darkorange;
+}
+
+a:hover {
+  color: #04AA6D;
+}
+
+a:active {
+  color: #91c8ea;
+}
+
+b {
+    color: chocolate;
+}
