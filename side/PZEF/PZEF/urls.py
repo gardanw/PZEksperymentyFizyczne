@@ -24,5 +24,6 @@ urlpatterns = [
     path('experiments/', include('experiments.urls')),
     path('brython/', include('django_brython.urls', namespace='brython')),
     path('', views.HomePage.as_view(), name='index'),
+    path(r'oprojekcie/', views.OprojekcieView.as_view(), name='oprojekcie'),
 ]
 urlpatterns += staticfiles_urlpatterns()

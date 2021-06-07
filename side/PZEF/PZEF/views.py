@@ -7,3 +7,11 @@ class HomePage(generic.ListView):
 
     def get_queryset(self):
         return Eksperymenty.objects.order_by('exp_name')
+
+
+class OprojekcieView(generic.ListView):
+    template_name = 'experiments/oprojekcie.html'
+    context_object_name = 'eksperymenty'
+
+    def get_queryset(self):
+        return Eksperymenty.objects.order_by('exp_name')
