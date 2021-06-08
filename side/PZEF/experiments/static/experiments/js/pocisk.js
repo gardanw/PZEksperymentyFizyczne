@@ -67,12 +67,10 @@ balistyczna = function (v0, theta) {
         Y.push(((2 + alpha * dt) * Y[Y.length - 1] - Y[Y.length - 2] - g * dt ** 2) / (1 + alpha * dt))
 
     }
-    ;
     var t = [];
     for (let i = 0; i < X.length; i++) {
         t.push(dt * i)
     }
-    ;
     var X1 = X.slice();
     var X2 = X.slice();
     var Y1 = Y.slice();
@@ -81,7 +79,6 @@ balistyczna = function (v0, theta) {
     X2.pop();
     Y1.shift()
     Y2.pop();
-    ;
     var V = dzielenie(pierwiastek(dodawanie(potegowanie(odejmowanie(X1, X2)), potegowanie(odejmowanie(Y1, Y2)))), dt);
     V.push(0);
 

@@ -53,4 +53,29 @@ Krzywa balistyczna – krzywa, po której poruszałby się wystrzelony punkt mat
 W praktyce krzywa balistyczna wyznacza tor lotu środka masy pocisku od punktu wylotu z lufy do punktu upadku. Kształt tego toru, tak jak w przypadku punktu materialnego, zależy od kąta nachylenia i prędkości początkowej pocisku oraz od wysokości, z której został on wystrzelony.<br>
 <br>
 Krzywa balistyczna odpowiada w przybliżeniu paraboli, w rzeczywistości jest jednak nieco asymetryczna.<br>
+<br>
+Obliczanie trajektorii pocisku odbywa się w następujący sposób:<br>
+1. pozycja początkowa pocisku ustalana jest jako <b><em>x</em></b>=0, <b><em>y</em></b>=0<br>
+<br>
+2. pozycja po pierwszym kroku czasowym <b>Δ<em>t</em></b> dana jest wzorem:<br>
+$$ { x=\Delta t v_0 \cos{\Theta} } $$
+$$ { y=\Delta t v_0 \sin{\Theta} } $$
+gdzie:<br>
+<b><em>v<sub>0</sub></em></b> to prędkość początkowa,<br>
+<b><em>&#920;</em></b> to kąt, pod jakim został wystrzelony pocisk<br>
+<br>
+3. pozycja w kolejnych krokach dana jest wzorem:<br>
+$$ { x_{i+1}=\frac{(2+\alpha\Delta t)x_i+x_{i-1}}{1+\alpha\Delta t} } $$
+$$ { y_{i+1}=\frac{(2+\alpha\Delta t)y_i+y_{i-1}-g\Delta t^2}{1+\alpha\Delta t} } $$
+gdzie:<br>
+<b><em>α</em></b> to wspułczynnik oporu powietrza,<br>
+<b>Δ<em>t</em></b> to krok czasowy,<br>
+<b><em>g</em></b> to przyśpieszenie ziemskie<br>
+<br>
+4. krok 3. powtarzany jest do momentu, aż składowa <b><em>y</em></b> osiągnie wartość mniejszą niż 0, co odpowiada zderzeniu pocisku z ziemią.<br>
+<br>
+Prędkość pocisku w kolejnych krokach obliczana jest wzorem:<br>
+$$ { v_i=\frac{\sqrt{(x_{i-1}-x_i)^2+(y_{i-1}-y_i)^2}}{\Delta t} } $$
+co jest analogiczne do przebytej drogi w czasie <b>Δ<em>t</em></b><br>
+<br>
 {% endblock %}
