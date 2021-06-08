@@ -7,6 +7,7 @@
 
 body{
     background-color: #202020;
+    font-family: Verdana, serif;
 }
 
 .header {
@@ -35,7 +36,6 @@ body{
     height: 100%;
     display: table-cell;
     vertical-align: middle;
-    font-family: 'Montserrat';
     font-size: 32px;
     font-weight: 200;
 }
@@ -66,7 +66,6 @@ body{
 .navigation li a {
     height: 100%;
     color: #91c8ea;
-    font-family: 'Montserrat';
     font-size: 16px;
     font-weight: 200;
 }
