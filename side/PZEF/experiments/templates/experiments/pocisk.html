@@ -54,28 +54,27 @@ W praktyce krzywa balistyczna wyznacza tor lotu środka masy pocisku od punktu w
 <br>
 Krzywa balistyczna odpowiada w przybliżeniu paraboli, w rzeczywistości jest jednak nieco asymetryczna.<br>
 <br>
-Obliczanie trajektorii pocisku odbywa się w następujący sposób:<br>
-1. pozycja początkowa pocisku ustalana jest jako <b><em>x</em></b>=0, <b><em>y</em></b>=0<br>
-<br>
-2. pozycja po pierwszym kroku czasowym <b>Δ<em>t</em></b> dana jest wzorem:<br>
-$$ { x=\Delta t v_0 \cos{\Theta} } $$
-$$ { y=\Delta t v_0 \sin{\Theta} } $$
+Ruch wystrzelonego, pod kątem <b><em>&#920;</em></b> i z prędkością <b><em>v<sub>0</sub></em></b>, pocisku można podzielić na dwie składowe, poziomą <b><em>x</em></b> oraz pionową <b><em>y</em></b>. Położenie pocisku w chwili <b><em>t</em></b> można obliczyć ze wzoru:<br>
+$$ { x(t)=x(t-\epsilon)+V_x(t-\epsilon)t } $$
+$$ { y(t)=y(t-\epsilon)+V_y(t-\epsilon)t } $$
 gdzie:<br>
-<b><em>v<sub>0</sub></em></b> to prędkość początkowa,<br>
-<b><em>&#920;</em></b> to kąt, pod jakim został wystrzelony pocisk<br>
-<br>
-3. pozycja w kolejnych krokach dana jest wzorem:<br>
-$$ { x_{i+1}=\frac{(2+\alpha\Delta t)x_i+x_{i-1}}{1+\alpha\Delta t} } $$
-$$ { y_{i+1}=\frac{(2+\alpha\Delta t)y_i+y_{i-1}-g\Delta t^2}{1+\alpha\Delta t} } $$
+<b><em>V<sub>x</sub></em></b>(<b><em>t</em></b>) i <b><em>V<sub>y</sub></em></b>(<b><em>t</em></b>) to składowe prędkości, w chwili <b><em>t</em></b> dane wzorem:
+$$ { V_x(t)=V_x(t-\epsilon)+a_x(t-\epsilon)t } $$
+$$ { V_y(t)=V_y(t-\epsilon)+a_y(t-\epsilon)t } $$
 gdzie:<br>
-<b><em>α</em></b> to współczynnik oporu powietrza,<br>
-<b>Δ<em>t</em></b> to krok czasowy,<br>
+<b><em>a<sub>x</sub></em></b>(<b><em>t</em></b>) i <b><em>a<sub>y</sub></em></b>(<b><em>t</em></b>) to składowe przyśpieszenia, które w chwili <b><em>t</em></b> można obliczyć:
+$$ { a_x(t) = -\frac{1}{2}\alpha V_x(t) } $$
+$$ { a_y(t) = -\frac{1}{2}\alpha V_y(t)-\frac{1}{2}g } $$
+gdzie:<br>
+<b><em>α</em></b> to współczynnik siły oporu powietrza na jednostkę masy<br>
 <b><em>g</em></b> to przyśpieszenie ziemskie<br>
 <br>
-4. krok 3. powtarzany jest do momentu, aż składowa <b><em>y</em></b> osiągnie wartość mniejszą niż 0, co odpowiada zderzeniu pocisku z ziemią.<br>
+Można zauważyć, że:
+$$ { \dot{x}(t)=V_x(t) ,\; \dot{y}(t)=V_y(t) } $$
+$$ { \ddot{x}(t)=a_x(t) ,\; \ddot{y}(t)=a_y(t) } $$
 <br>
-Prędkość pocisku w kolejnych krokach obliczana jest wzorem:<br>
-$$ { v_i=\frac{\sqrt{(x_{i-1}-x_i)^2+(y_{i-1}-y_i)^2}}{\Delta t} } $$
-co jest analogiczne do przebytej drogi w czasie <b>Δ<em>t</em></b><br>
+</b><b><em>V<sub>x</sub></em></b>(0) i <b><em>V<sub>y</sub></em></b>(0) są równe:
+$$ { V_x(0)=v_0\cos(\Theta) } $$
+$$ { V_x(0)=v_0\sin(\Theta) } $$
 <br>
 {% endblock %}
