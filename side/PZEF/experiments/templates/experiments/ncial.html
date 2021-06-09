@@ -73,11 +73,11 @@
 Problem <i><b>n</b></i> ciał – zagadnienie mechaniki klasycznej polegające na wyznaczeniu toru ruchów wszystkich ciał danego układu <i><b>n</b></i> ciał o danych masach, prędkościach i położeniach początkowych na podstawie prawa ruchu i założenia, że ciała oddziałują ze sobą zgodnie z prawem grawitacji Newtona.<br>
 <br>
 W problemie <i><b>n</b></i> ciał, na każde ciało działa wypadkowa siła pochodząca od oddziaływania z pozostałymi ciałami. Siła ta jest proporcjonalna do ilorazu mas oddziałujących ciał i odwrotnie proporcjonalna do kwadratu ich odległości.<br>
-Siła działająca na ciało obliczana jest w karzdej klatce symulacji i dana jest wzorem:<br>
+Siła działająca na ciało obliczana jest w każdej klatce symulacji i dana jest wzorem:<br>
 $$ { F_j = \sum^N_{i=1, i\neq j}{G\frac{m_jm_i}{|\vec{r_{ij}}|^2}}\frac{\vec{r_{ji}}}{|\vec{r_{ji}}|} } $$
 <br>
 Do obliczania kolejnych położeń ciał wykorzystano algorytm LeapFrog, w którym prędkości i położenia danego ciała w każdej kolejnej klatce symulacji obliczane są ze wzoru:<br>
-$$ { v_{i+1}=v_i+F_i\frac{\Delta t}{m} } $$
+$$ { v_{i+1}=v_i+\frac{F_i}{m}\Delta t } $$
 $$ { x_{i+1}=x_i+v_{i+1}\Delta t } $$
 gdzie:<br>
 <b><em>v<sub>i</sub></em></b> to prędkość danego ciała w <b><em>i</em></b>-tej klatce,<br>
